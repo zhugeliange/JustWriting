@@ -1,8 +1,0 @@
-<Files ~ "\.md$">
-order allow,deny
-deny from all
-</files>
-RewriteBase /
-RewriteEngine on
-RewriteCond $1 !^(index\.php|css|styles|posts|images|templates|robots\.txt)
-RewriteRule ^(.*)$ /index.php?/$1 [L]

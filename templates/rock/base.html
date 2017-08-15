@@ -11,7 +11,7 @@
 
     <link rel='alternate' type='application/rss+xml' title='atom 1.0' href='/feed' />
     
-    <link href="/favicon.png" rel="shortcut icon">
+    <link href="/favicon.ico" rel="shortcut icon">
     
 	<link href="/templates/{{config.template}}/css/highlight.css" media="screen, projection" rel="stylesheet" type="text/css">
 
@@ -57,10 +57,8 @@
                 <nav id="main-nav">
                     <ul class="main-navigation">
                         <li><a href="/">{{ lang('home') }}</a></li>
-                            <li><a href="/tags">{{ lang('tags') }}</a></li>
-                            <li><a href="/archive">{{ lang('archive') }}</a></li>
-                        <li><a href="/feed">RSS</a></li>                        
-
+                        <li><a href="/tags">{{ lang('tags') }}</a></li>
+                        <li><a href="/archive">{{ lang('archive') }}</a></li>
                     </ul>
                 </nav>
                 <nav id="sub-nav">
@@ -85,6 +83,10 @@
 					{% if config.email %}
                     <a class="email" href="{{ config.email }}" title="e-Mail" target="_blank">e-Mail</a>
 					{% endif %}
+
+                    {% if config.weibo %}
+                    <a class="weibo" href="{{ config.weibo }}" title="e-Weibo" target="_blank">Weibo</a>
+                    {% endif %}
 					
                 </div>
                 </nav>
@@ -92,8 +94,8 @@
                 <br/>
 				{% if config.author %}
                 <section>
-                    <h2>{{ lang('aboutme') }}</h2>
-                    <p>{{ config.aboutme }}</p>
+                    <h2 style="color: #EFEFEF;">{{ lang('aboutme') }}</h2>
+                    <p style="color: #999;">{{ config.aboutme }}</p>
                 </section>
 				{% endif %}
                 </br>
