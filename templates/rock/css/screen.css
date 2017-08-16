@@ -200,8 +200,8 @@ article .entry-content .video-container iframe,article .entry-content .video-con
 .post .meta .comments:before{content:"\f075"}
 .archives{position:relative}
 .archives:last-of-type:before{content:"";position:absolute;bottom:0;width:200px;border-top:1px solid #ddd}
-.archives .year{line-height:35px;width:200px;position:absolute;top:0;padding-top:15px;border-top:1px solid #fff}
-.archives .year:before{content:"";position:absolute;top:-2px;width:100%;border-top:1px solid #ddd}
+.archives .year{line-height:35px;width:200px;position:absolute;top:0;padding-top:15px;}
+.archives .year:before{content:"";position:absolute;top:-2px;width:100%;}
 @media screen and (max-width:600px){.archives .year{position:relative;width:100%}
 }
 .archives article{margin-left:200px;padding:15px 0}
@@ -351,7 +351,7 @@ body{background:#3D4349;font-family:"Open Sans","HelveticaNeue-Light","Helvetica
 .container{position:relative;min-height:100%}
 .container .credit-box{color:#AAA;font-size:.8em;position:fixed;bottom:20px;left:40px}
 .container .credit-box a{color:inherit;text-decoration:underline}
-.container .mid-col{position:absolute;right:0;min-height:100%;width:77%;background:whitesmoke}
+.container .mid-col{position:absolute;right:0;min-height:100%;width:77%;background:whitesmoke;padding-top: 20px;}
 .container .mid-col #banner{width:100%}
 .container .mid-col #banner small{margin-right:70px}
 .container .mid-col footer.inner{text-align:center;margin:0px 70px 0px 40px;width:auto}

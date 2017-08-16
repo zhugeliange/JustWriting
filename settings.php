@@ -24,14 +24,15 @@ $blog_config['template'] = 'rock';
 //If you would like that everyone comment your post,you must set this variable to True.
 $blog_config['comment'] = True;
 
-//duoshuo short name，duoshuo is the social comment system,url is  http://duoshuo.com/.
-$blog_config['duoshuo_short_name'] = 'justwriting';
-
-//disqus short name
-$blog_config['disqus_short_name'] = '';
+// gitment comment system https://github.com/imsun/gitment
+$blog_config['gitment_id'] = '';
+$blog_config['gitment_owner'] = 'zhugeliange';
+$blog_config['gitment_repo'] = 'JustWriting';
+$blog_config['gitment_client_id'] = '05e121b296febffb17e0';
+$blog_config['gitment_client_secret'] = 'b864371cd8ce021bc84ab61f3342107508fea286';
 
 //URL to your blog root.This is your base URL,without  a trailing slash:http://justwriting.sinaapp.com
-$blog_config['base_url'] = 'http://jw.fsociety.cn/';
+$blog_config['base_url'] = 'http://jw.fsociety.cn';
 
 //your github url
 $blog_config['github'] = 'https://github.com/zhugeliange';

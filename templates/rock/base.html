@@ -17,7 +17,6 @@
 
     <link href="/templates/rock/css/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
     <link href="/templates/rock/css/style.css" rel="stylesheet" type="text/css">
-    <link href="/templates/rock/css/gitment.css" rel="stylesheet" type="text/css">
     
     <script type="text/javascript" src="/templates/rock/js/jquery-1.9.1.min.js"></script>    
 	<link rel="stylesheet" href="/templates/rock/css/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
@@ -40,7 +39,7 @@
 {{ config.mathjax|raw }}
 </head>
 <body>
-    <div id="container" class="container">
+    <div class="container">
         <div class="left-col">
             <div class="intrude-less">
             <header id="header" class="inner">
@@ -106,20 +105,6 @@
         {% block content %}
         {% endblock %}
     </div>
-    <script type="text/javascript" src="/templates/rock/js/gitment"></script>
-    <script>
-        var gitment = new Gitment({
-          id: 'location.href', // 可选。默认为 location.href
-          owner: 'zhugeliange',
-          repo: 'https://github.com/zhugeliange/JustWriting',
-          oauth: {
-            client_id: '05e121b296febffb17e0',
-            client_secret: 'b864371cd8ce021bc84ab61f3342107508fea286',
-          },
-        })
-
-        gitment.render('container')
-    </script>
 </body>
 </html>
 
