@@ -381,7 +381,7 @@ body{background:#3D4349;font-family:"Open Sans","HelveticaNeue-Light","Helvetica
 .container .left-col #header .profilepic img{border-radius:50%;-moz-border-radius:50%;-webkit-border-radius:50%}
 .container .left-col #header a{color:#EFEFEF;text-shadow:0 1px #333}
 .container .left-col #header a:hover{color:#1593c9}
-.container .left-col #header #sub-nav{margin-top:10px}
+.container .left-col #header #sub-nav{margin-top:20px}
 .container .left-col #header #sub-nav .search::before{left:10px}
 .container .left-col #header #sub-nav .social{margin-bottom:10px}
 .archives .title{font-size:1.2em}

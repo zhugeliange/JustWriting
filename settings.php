@@ -40,6 +40,7 @@ $blog_config['github'] = 'https://github.com/zhugeliange';
 //other social network : twitter, facebook, rss and email. For example :
 $blog_config['facebook'] = 'https://www.facebook.com/its.funnuy';
 $blog_config['weibo'] = 'http://weibo.com/1803651761/profile?topnav=1&wvr=6';
+$blog_config['email'] = 'arthursjy@gmail.com';
 //there's more supported networks, but you must add them manually to \templates\rock\base.html - names are in \templates\rock\images\social\*
 
 //posts count of posts list

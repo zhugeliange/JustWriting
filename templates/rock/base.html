@@ -78,13 +78,13 @@
 					{% if config.facebook %}
                     <a class="facebook" href="{{ config.facebook }}" title="Facebook" target="_blank">Facebook</a>
 					{% endif %}
-					
-					{% if config.email %}
-                    <a class="email" href="{{ config.email }}" title="e-Mail" target="_blank">e-Mail</a>
-					{% endif %}
 
                     {% if config.weibo %}
                     <a class="weibo" href="{{ config.weibo }}" title="e-Weibo" target="_blank">Weibo</a>
+                    {% endif %}
+                    
+                    {% if config.email %}
+                    <a class="email" href="mailto:{{ config.email }}" title="e-Mail" target="_blank">e-Mail</a>
                     {% endif %}
 					
                 </div>
@@ -105,6 +105,7 @@
         {% block content %}
         {% endblock %}
     </div>
+    <!-- Go to www.addthis.com/dashboard to customize your tools --> <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5993afdc8ae3aacc"></script>
 </body>
 </html>
 
