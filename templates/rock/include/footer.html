@@ -1,4 +1,21 @@
-
+<div class="pay animated">
+	<div class="alipay">
+	    <i class="fa fa-times-circle-o pay-close"></i>
+	    <img src="{{ config.alipay }}" alt="微信">
+	    <div class="pay-change">
+	        <i class="fa fa-repeat"></i>
+	        切换微信
+	    </div>
+	    <div class="wepay">
+	    	<i class="fa fa-times-circle-o pay-close"></i>
+		    <img src="{{ config.wepay }}" alt="支付宝">
+		    <div class="pay-change">
+		        <i class="fa fa-repeat"></i>
+		        切换支付宝
+		    </div>
+	    </div>
+	</div>
+</div>
 <footer id="footer" class="inner"><p>
   	{% if config.author %}
 	Copyright © {{ "now"|date("Y") }} - 

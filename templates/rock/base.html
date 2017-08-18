@@ -20,6 +20,8 @@
     
     <link href="/favicon.ico" rel="shortcut icon">
     
+    <link rel="stylesheet" href="/templates/rock/css/font-awesome.css" type="text/css">
+    <link rel="stylesheet" href="/templates/rock/css/animate.css" type="text/css">
 	<link href="/templates/{{config.template}}/css/highlight.css" media="screen, projection" rel="stylesheet" type="text/css">
 
     <link href="/templates/rock/css/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -94,14 +96,6 @@
 					{% if config.github %}
                     <a class="github" href="{{ config.github }}" title="GitHub" target="_blank">GitHub</a>
 					{% endif %}
-
-					{% if config.twitter %}
-                    <a class="twitter" href="{{ config.twitter }}" title="Twitter" target="_blank">Twitter</a>
-					{% endif %}
-					
-					{% if config.rss %}
-                    <a class="rss" href="{{ config.rss }}" title="RSS" target="_blank">RSS</a>
-					{% endif %}
 					
 					{% if config.facebook %}
                     <a class="facebook" href="{{ config.facebook }}" title="Facebook" target="_blank">Facebook</a>
@@ -114,6 +108,10 @@
                     {% if config.email %}
                     <a class="email" href="mailto:{{ config.email }}" title="e-Mail" target="_blank">e-Mail</a>
                     {% endif %}
+
+                    {% if config.douban %}
+                    <a class="douban" href="{{ config.douban }}" title="Douban" target="_blank">Douban</a>
+                    {% endif %}
 					
                 </div>
                 </nav>
@@ -123,17 +121,35 @@
                 <section>
                     <h2 style="color: #EFEFEF;">{{ lang('aboutme') }}</h2>
                     <p style="color: #999;">{{ config.aboutme }}</p>
+                    <div style="width: 98%; text-align: center;">
+                        <img id="pay" style="margin: 20px auto; cursor: pointer; z-index: 999;" src="{{ config.pay }}" alt="打赏">
+                    </div>
                 </section>
 				{% endif %}
                 </br>
 
             </header>               
             </div>
-        </div>  
+        </div>
         {% block content %}
         {% endblock %}
     </div>
     <!-- Go to www.addthis.com/dashboard to customize your tools --> <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5993afdc8ae3aacc"></script>
+    <script type="text/javascript">
+        $('#pay').click(function() {
+            $('.pay').removeClass('rollOut');
+            $('.pay').addClass('rollIn');
+        });
+
+        $('.pay-close').click(function() {
+            $('.pay').removeClass('rollIn');
+            $('.pay').addClass('rollOut');
+        });
+
+        $('.pay-change').click(function() {
+            $('.alipay').toggleClass('change');
+        });
+    </script>
 </body>
 </html>
 

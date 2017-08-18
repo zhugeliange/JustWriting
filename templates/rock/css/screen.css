@@ -351,7 +351,7 @@ body{background:#3D4349;font-family:"Open Sans","HelveticaNeue-Light","Helvetica
 .container{position:relative;min-height:100%}
 .container .credit-box{color:#AAA;font-size:.8em;position:fixed;bottom:20px;left:40px}
 .container .credit-box a{color:inherit;text-decoration:underline}
-.container .mid-col{position:absolute;right:0;min-height:100%;width:77%;background:whitesmoke;padding-top: 20px;}
+.container .mid-col{position:absolute;right:0;min-height:100%;width:77%;background:whitesmoke;padding-top: 20px;overflow: hidden;}
 .container .mid-col #banner{width:100%}
 .container .mid-col #banner small{margin-right:70px}
 .container .mid-col footer.inner{text-align:center;margin:0px 70px 0px 40px;width:auto}
@@ -374,7 +374,7 @@ body{background:#3D4349;font-family:"Open Sans","HelveticaNeue-Light","Helvetica
 .container .mid-col .mid-col-container #content article h1.title a:hover{color:#1593c9;-webkit-transition:color 0.3s;-moz-transition:color 0.3s;-o-transition:color 0.3s;transition:color 0.3s}
 .container .mid-col footer{width:100%}
 .container .left-col:hover{opacity:1}
-.container .left-col{width:23%;position:fixed;opacity:.5;-webkit-transition:all 0.2s ease-in;-moz-transition:all 0.2s ease-in;-o-transition:all 0.2s ease-in;-ms-transition:all 0.2s ease-in;transition:all 0.2s ease-in;height:100%}
+.container .left-col{width:23%;position:fixed;opacity:.5;-webkit-transition:all 0.2s ease-in;-moz-transition:all 0.2s ease-in;-o-transition:all 0.2s ease-in;-ms-transition:all 0.2s ease-in;transition:all 0.2s ease-in;height:100%;z-index: 999;}
 .container .left-col .intrude-less{width:80%}
 .container .left-col #header{width:100%;padding:20% 0% 0% 15%}
 .container .left-col #header #main-nav{margin-top:10px}
