@@ -16,7 +16,7 @@ $blog_config['author'] = '猪哥亮';
 $blog_config['aboutme'] = ' 在下姓猪哥，单名一个亮字，号半猿。 93的web全栈程序猿一枚 主要技术栈是 · lnmp + react + node · and so on. 目前就职于上海一家外企，欢迎天下志同道合之士啊~ ';
 
 //blog avatar
-$blog_config['avatar'] = 'http://oj6n9nf7i.bkt.clouddn.com/image/test/head.jpg';
+// $blog_config['avatar'] = 'http://oj6n9nf7i.bkt.clouddn.com/image/test/head.jpg';
 
 //blog template name.The template root path is /templates.You can set rock or deepure. 
 $blog_config['template'] = 'rock';
@@ -63,7 +63,3 @@ $blog_config['dropbox']['access_token'] = '';
  * Support 49 code styles, pls see this page: https://highlightjs.org/static/test.html
  */
 $blog_config['highlight'] = 'default';
-
-$blog_config['pay'] = 'http://oj6n9nf7i.bkt.clouddn.com/image/test/pay.png';
-$blog_config['alipay'] = 'http://oj6n9nf7i.bkt.clouddn.com/image/test/alipay.png';
-$blog_config['wepay'] = 'http://oj6n9nf7i.bkt.clouddn.com/image/test/wepay.png';
