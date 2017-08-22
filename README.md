@@ -12,7 +12,7 @@
 ##### 2. 稍微修改了下样式，这个个人品味不好说。。。
 ##### 3. 之前代码里的 `多说评论系统` 挂了，于是我就参考 [gitment](https://github.com/imsun/gitment) 这位大神的换了个 `github` 的评论。
 ##### 4. 又顺便加了分享功能（当然还是用的第三方[addthis](https://www.addthis.com/)），还有加了网站分析，用的是 [GA](https://analytics.google.com/)，顺便又加了打赏和下广告 orz 。
-##### 5. TODO: *以后再加个排序，加个搜索，这样就有点博客的样子了，为开源贡献点啥：） 如果有需要还想加点啥的话，欢迎私信我呀 （e-mail: arthursjy@gmail.com）*
+##### 5. TODO: *以后再加个排序，加个搜索，markdown（Michelf插件） 加上目录功能，做一些SEO处理，这样就有点博客的样子了，为开源贡献点啥：） 如果有需要还想加点啥的话，欢迎私信我呀 （e-mail: arthursjy@gmail.com）*
 
 > 有几个地方需要注意下：
 > 1. 这个评论插件每次新写一个博客都得手动init一下，有时间写个脚本自己跑跑
