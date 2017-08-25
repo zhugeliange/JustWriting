@@ -168,3 +168,59 @@
 .back-top:hover, .back-top:active {
     opacity: 1;
 }
+
+@media screen and (max-width: 699px) {
+    .search {
+        position: relative;
+        width: 150px;
+        height: 50px;
+        margin: 0 auto -25px auto;
+    }
+}
+
+@media screen and (min-width: 700px) {
+    .search {
+        width: 150px;
+        height: 50px;
+        position: absolute;
+        right: -75px;
+        top: 10px;
+    }
+}
+
+.search input {
+    width: 75px;
+    height: 28px;
+    padding: 8.5px 45px 8.5px 25px;
+    font-size: 1.5em;
+    color: #333;
+    background-color: #fff;
+    background-image: none;
+    border: 2.5px solid #3D4349;
+    border-radius: 25px;
+    -webkit-transition: all ease-in-out .5s;
+    -o-transition: all ease-in-out .5s;
+    transition: all ease-in-out .5s;
+    outline: 0;
+}
+
+.search input:hover, .search input:active, .search input:focus {
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.5), 0 0 2px rgba(0,0,0,.5);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.5), 0 0 2px rgba(0,0,0,.5);
+}
+
+.search i {
+    position: absolute;
+    top: 11px;
+    right: 17px;
+}
+
+.pays {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.pays > img {
+    margin: 30px 0 0 0; 
+    cursor: pointer; 
+}

@@ -74,7 +74,7 @@
             <div class="intrude-less">
             <header id="header" class="inner">
                 <div class="profilepic">
-<a href='/'> <img src="head.jpg" alt='Profile Picture' style='width: 160px;' id='ProfilePicture' /> </a>
+<a href='/'> <img src="head.jpg" alt='Profile Picture' id='ProfilePicture' /> </a>
                 </div>
 
 				{% if config.title %}
@@ -115,20 +115,21 @@
 					
                 </div>
                 </nav>
-
-                <br/>
 				{% if config.author %}
                 <section>
-                    <h2 style="color: #EFEFEF;">{{ lang('aboutme') }}</h2>
+                    <h2 style="color: #EFEFEF; margin-bottom: 10px;">{{ lang('aboutme') }}</h2>
                     <p style="color: #999;">{{ config.aboutme }}</p>
-                    <div style="width: 98%; text-align: center;">
-                        <img id="pay" style="margin: 20px auto; cursor: pointer; z-index: 999;" src="pay.png" alt="打赏">
+                    <div class="pays">
+                        <img id="pay" src="pay.png" alt="打赏">
                     </div>
                 </section>
 				{% endif %}
-                </br>
 
             </header>               
+            </div>
+            <div class="search">
+                <input type="text" name="search" placeholder="search">
+                <i class="fa fa-2x fa-search" aria-hidden="true"></i>
             </div>
         </div>
         {% block content %}
@@ -156,6 +157,11 @@
                 $('.back-top').slideDown();
             } else {
                 $('.back-top').slideUp();
+                if ($(window).scrollTop() > 10) {
+                    $('.search').slideUp();
+                } else {
+                    $('.search').slideDown();
+                }
             }
         });
 
