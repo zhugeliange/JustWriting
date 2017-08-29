@@ -264,10 +264,10 @@ class blog_lib{
 
   private function __get_all_posts()
   {
-    if(isset($this->_all_posts))
-    {
+    if(isset($this->_all_posts)) {
       return $this->_all_posts;
     }
+
     $all_tags = array();
     $posts_path = $this->posts_path;
 
@@ -275,16 +275,15 @@ class blog_lib{
     $this->_all_categories = $categories;
 
     if($handle = opendir($posts_path)) {
-
         $files = array();
         $filetimes = array();
 
-        foreach($post_files['md'] as $post_file_path){
+        foreach($post_files['md'] as $post_file_path) {
           $entry = basename($post_file_path);
           $fcontents = file($post_file_path);
 
           $hi=0;
-          $pattern = '/^\s*(title|author|date|position|toc|description|intro|status|toc|url|tags|category)\s*:(.*?)$/im';
+          $pattern = '/^\s*(title|author|date|position|toc|description|intro|status|toc|url|tags|category)\s*:(.*?)$/uim';
           $post_title='';
           $post_intro='';
           $post_author='';
@@ -294,14 +293,13 @@ class blog_lib{
           $position = '';
           $toc = false;
 
-          if($fcontents and $fcontents[$hi] and strpos($fcontents[$hi],':')){
-
-            while(trim($fcontents[$hi])){
+          if($fcontents and $fcontents[$hi] and strpos($fcontents[$hi],':')) {
+            while(trim($fcontents[$hi])) {
               preg_match($pattern, $fcontents[$hi], $matches);
               $hi++;
 
               if(empty($matches)) break;
-              else{
+              else {
                 switch (trim(strtolower($matches[1]))) {
                   case 'toc':
                     $tocstring = strtolower(trim($matches[2]));
@@ -325,57 +323,60 @@ class blog_lib{
                       $post_status = 'draft';
                     }
                     break;
-
                   case 'tags':
                   case 'category':
                     $tags = trim($matches[2]);
                     if(substr($tags,0,1)=='[') $tags = substr($tags,1);
                     if(substr($tags,-1,1)==']') $tags = substr($tags,0,-1);
-                    $post_tags = preg_split('#[,\s]#',$tags, 0, PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE);
-
-
+                    $tag = explode(' ', $tags);
+                    $post_tags = [];
+                    foreach ($tag as $key => $value) {
+                      $post_tags[$key]['text'] = $value;
+                      $post_tags[$key]['weight'] = 1;
+                      $post_tags[$key]['link'] = '/tags/' . $value;
+                    }
                     break;
                   case 'intro':
                   case 'description':
                     $post_intro = trim($matches[2]);
                     break;
-
                   default:
-                    # code...
                     break;
                 }
               }
             }
           }
 
-          if(empty($post_title)){
+          if(empty($post_title)) {
             $post_title = str_replace('.md','',$entry);
           }
 
           if(strtolower($post_status)!='public'){
             continue;
           }
-          foreach($post_tags as $k=>$row)
-          {
-            $trimed_tag = trim($row);
+
+          foreach($post_tags as $k=>$row) {
+            $trimed_tag = trim($row['text']);
             if(empty($trimed_tag))
               unset($post_tags[$k]);
-            else{
+            else {
               if(isset($all_tags[$trimed_tag])){
-
-                $all_tags[$trimed_tag] += 1;
+                $all_tags[$trimed_tag]['weight'] ++;
               }else{
-                $all_tags[$trimed_tag] = 1;
+                $all_tags[$trimed_tag]['weight'] = 1;
               }
+              $all_tags[$trimed_tag]['text'] = $row['text'];
+              $all_tags[$trimed_tag]['link'] = $row['link'];
             }
           }
-          if(empty($post_date))
-          {
+
+          if(empty($post_date)) {
             $post_date = filemtime($post_file_path);
-          }else{
+          } else {
             $post_date = strtotime($post_date);
           }
-          if(empty($post_author)){
+
+          if(empty($post_author)) {
             $post_author = $this->CI->blog_config['author'];
           }
 
@@ -383,33 +384,34 @@ class blog_lib{
           $post_content_md = trim(join('', array_slice($fcontents, $hi, count($fcontents))));
           $post_content = $post_content_md;
 
-          if(empty($post_intro)){
+          if(empty($post_intro)) {
             $post_text = strip_tags($this->markdown($post_content));
-            if (function_exists('mb_substr')){
+            if (function_exists('mb_substr')) {
               $post_intro = mb_substr($post_text,0,200);
-            }else{
+            } else {
               $post_intro = substr($post_text,0,200);
             }
 
           }
+
           $slug = str_replace($this->file_ext,'',$entry);
 
           $temp_c = basename(str_replace($entry,'',$post_file_path));
           $post_category = '';
-          if($temp_c!='posts'){
+          if($temp_c!='posts') {
             $post_category = $temp_c;
           }
 
-          if($post_status=='public'){
+          if($post_status=='public') {
 
             $files[] = array('fname' => $entry,
             'slug'=>$slug,
             'toc'=>$toc,
             'link'=> $this->CI->blog_config['base_url']."/post/$slug",
             'title' => $post_title, 'author' => $post_author, 'date' => $post_date, 'tags' => $post_tags, 'status' => $post_status, 'intro' => $post_intro, 'content' => $post_content,'category'=>$post_category);
-            if($position){
+            if($position) {
               $post_dates[] = $position;
-            }else{
+            } else {
               $post_dates[] = $post_date;
 
             }
@@ -423,13 +425,12 @@ class blog_lib{
           }
       }
 
-        //
-        array_multisort($post_dates, SORT_DESC, $files);
+      array_multisort($post_dates, SORT_DESC, $files);
 
-        $this->_all_posts = $files;
-        $this->_all_tags = $all_tags;
+      $this->_all_posts = $files;
+      $this->_all_tags = $all_tags;
 
-        return $this->_all_posts;
+      return $this->_all_posts;
 
     } else {
       $this->_all_tags = array();
@@ -460,7 +461,7 @@ class blog_lib{
    {
      foreach($post['tags'] as $post_tag)
      {
-       if(strtolower($tag)==strtolower($post_tag)){
+       if(strtolower($tag)==strtolower($post_tag['text'])){
           $result[]=$post;
           break;
        }

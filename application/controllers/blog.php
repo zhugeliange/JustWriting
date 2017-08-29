@@ -19,7 +19,7 @@ class Blog extends CI_Controller {
     twig_extend();    
     $this->data['config'] = $this->blog_config;              
     $this->data['all_categories'] = $this->blog_lib->get_posts_categories(); 
-    $this->data['all_tags'] = $this->blog_lib->get_posts_tags();    
+    $this->data['all_tags'] = array_values($this->blog_lib->get_posts_tags());
   }
   
 	public function index()

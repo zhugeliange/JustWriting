@@ -23,10 +23,12 @@ class Twig_lib {
         }else{
           $this->twig = new Twig_Environment($this->loader, array(
           'cache' => APPPATH.'cache',
-          'auto_reload' => true
-          ));                      
-        }
+          'auto_reload' => true,
+          'debug' => true
+          ));   
 
+          $this->twig->addExtension(new Twig_Extension_Debug());                  
+        }
     }
 
     public function render($tpl,$data,$return = FALSE) {

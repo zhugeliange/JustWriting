@@ -32,7 +32,8 @@ $blog_config['gitment_client_id'] = '05e121b296febffb17e0';
 $blog_config['gitment_client_secret'] = 'b864371cd8ce021bc84ab61f3342107508fea286';
 
 //URL to your blog root.This is your base URL,without  a trailing slash:http://justwriting.sinaapp.com
-$blog_config['base_url'] = 'http://fsociety.cn';
+// $blog_config['base_url'] = 'http://fsociety.cn';
+$blog_config['base_url'] = 'http://test.jay.eyebuy.direct:2222';
 
 //your github url
 $blog_config['github'] = 'https://github.com/zhugeliange';

@@ -8,7 +8,7 @@
                         <time >{{ post.date | date('Y-m-d') }}</time></div>
                         {% if post.tags %}
                             {% for tag in post.tags %}
-                                <a class='category' href="/tags/{{ tag }}">{{ tag }}</a>
+                                <a class='category' href="/tags/{{ tag.text }}">{{ tag.text }}</a>
                             {% endfor %}
                         {% endif %}
                     </div>

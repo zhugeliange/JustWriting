@@ -29,7 +29,7 @@
                         <div class="tags">
                             {{ lang('tags') }}：
                             {% for tag in post.tags %}
-                                <a href="/tags/{{ tag }}">{{ tag }}</a>
+                                <a href="{{ tag.link }}">{{ tag.text }}</a>
                             {% endfor %}
                         </div>
 						</br>
@@ -52,5 +52,24 @@
   });
 </script>
 {% endif %}  
+<i class="fa fa-3x fa-chevron-circle-up back-top"></i>
+<!-- Go to www.addthis.com/dashboard to customize your tools --> <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5993afdc8ae3aacc"></script>
+<script type="text/javascript">
+    $(window).scroll(function() {
+        if ($(window).scrollTop() > 1000) {
+            $('.back-top').slideDown();
+        } else {
+            $('.back-top').slideUp();
+            if ($(window).scrollTop() > 10) {
+                $('.search').slideUp();
+            } else {
+                $('.search').slideDown();
+            }
+        }
+    });
 
+    $('.back-top').click(function() {
+        $('html, body').animate({scrollTop: 0}, 1000);
+    });
+</script>
 {% endblock %}
