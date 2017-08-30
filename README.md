@@ -1,6 +1,6 @@
 # markdown blog system
 
-### ***[demo](http://jw.fsociety.cn)***
+### ***[demo](http://fsociety.cn)***
 
 > 就是一个静态博客，类似于 `hexo` 这些，最大好处就是集成 `Dropbox` 之后可以实现直接在本地编写 `markdown` 文件，自动同步到线上，并且这些数据是实时保存在你本地电脑和 `Dropbox` 里面的，方便将来随意迁移。
 
@@ -11,8 +11,11 @@
 ##### 1. 去掉了各种不必要的文件和代码，又把主要代码格式化并压缩了一下 （我有代码洁癖。。。）
 ##### 2. 稍微修改了下样式，这个个人品味不好说。。。
 ##### 3. 之前代码里的 `多说评论系统` 挂了，于是我就参考 [gitment](https://github.com/imsun/gitment) 这位大神的换了个 `github` 的评论。
-##### 4. 又顺便加了分享功能（当然还是用的第三方[addthis](https://www.addthis.com/)），还有加了网站分析，用的是 [GA](https://analytics.google.com/)，顺便又加了打赏和下广告 orz 。
-##### 5. TODO: *以后再加个排序，加个搜索，markdown（Michelf插件） 加上目录功能，做一些SEO处理，这样就有点博客的样子了，为开源贡献点啥：） 如果有需要还想加点啥的话，欢迎私信我呀 （e-mail: arthursjy@gmail.com）*
+##### 4. 又顺便加了分享功能（当然还是用的第三方[addthis](https://www.addthis.com/)），还有加了网站分析，用的是 [GA](https://analytics.google.com/)，顺便又加了打赏和广告 orz 。
+##### 5. 加上了层redis的缓存，这样就不用每次都去读取posts目录了，增加了搜索功能，做了些seo优化。
+##### 6. TODO：再加个gulp把静态文件压缩一遍。
+
+### `TODO: 为开源贡献点啥：） 如果有需要还想加点啥的话，欢迎私信我呀 （e-mail: arthursjy@gmail.com）`
 
 > 有几个地方需要注意下：
 > 1. 这个评论插件每次新写一个博客都得手动init一下，有时间写个脚本自己跑跑
