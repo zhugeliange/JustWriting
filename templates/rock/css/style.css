@@ -1,6 +1,6 @@
 .read_more{
     display: inline-block;
-    padding: 10px 10px 10px 10px;
+    padding: 10px 0;
     float: right;
 }
 
@@ -224,4 +224,33 @@
 .pays > img {
     margin: 30px 0 0 0; 
     cursor: pointer; 
+}
+
+.category {
+    margin: 0 3px;
+}
+
+.post > .meta > i:before {
+    content: "\f02c";
+    font: 1.3em FontAwesome;
+    padding-right: 10px;
+}
+
+.post > .meta > .date {
+    margin-bottom: 10px;
+}
+
+.archives > .meta > .date {
+    margin-bottom: 3px;
+}
+
+.post > .category > .tags > a {
+    margin: 0 5px;
+}
+
+.warning {
+    text-align: center;
+    font-size: 2em;
+    font-weight: bolder;
+    margin: 1em;
 }

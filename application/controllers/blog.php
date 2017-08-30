@@ -35,10 +35,8 @@ class Blog extends CI_Controller {
     if(empty($posts_per_page)) $posts_per_page = 10;
     
     $this->load_common_data();
-    
 
-
-    $posts = $this->blog_lib->get_posts();
+    $posts = isset($_GET['search']) && $_GET['search'] ? $this -> blog_lib -> search($_GET['search']) : $this->blog_lib->get_posts();
 
     $offset = ($pageno-1)*$posts_per_page;
     $this->data['posts'] = array_slice($posts,$offset,$posts_per_page);
@@ -55,9 +53,10 @@ class Blog extends CI_Controller {
     }else{
       $this->data['paginator']['has_next'] = false;
     }
-    
-    $this->twig_lib->render("index.html",$this->data);
 
+    $this->data['search'] = isset($_GET['search']) && $_GET['search'] ? $_GET['search'] : '';
+
+    $this->twig_lib->render("index.html", $this->data);
   }
   
   public function archive()
@@ -91,6 +90,7 @@ class Blog extends CI_Controller {
       $this->data['post'] = $post['curr'];
       $this->data['next_post'] = $post['next'];
       $this->data['prev_post'] =  $post['prev'];
+
 
       $this->twig_lib->render("post.html",$this->data); 
     }
@@ -142,5 +142,10 @@ class Blog extends CI_Controller {
     $this->load->helper('text');    
     $this->data['posts'] = $this->blog_lib->get_posts();
     $this->load->view("feed.html",$this->data); 
+  }
+
+  function isAjax()
+  {
+      return isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest';
   }
 }

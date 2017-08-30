@@ -1,4 +1,5 @@
 <?php
+require BASEPATH.'core/redis.php';
 require APPPATH.'third_party/Michelf/MarkdownExtra.inc.php';
 use \Michelf\MarkdownExtra;
 define('IMAGE_PATH','posts/images/');
@@ -38,7 +39,7 @@ class blog_lib{
   public function markdown($value='')
   {
     $text = $value;
-    $image_prefix = $this->CI->blog_config['image_prefix'];
+    $image_prefix = isset($this->CI->blog_config['image_prefix']) ? : '';
     if($image_prefix){
       $text = preg_replace_callback("/\!\[([^\]]*)\]\(([^\)]+)\)/",
         function ($matches) use($image_prefix){
@@ -231,15 +232,21 @@ class blog_lib{
     }
   }
 
+  function glob_recursive($directory, &$directories = array()) {
+      foreach(glob($directory, GLOB_ONLYDIR | GLOB_NOSORT) as $folder) {
+          $directories[] = $folder;
+          $this->glob_recursive("{$folder}/*", $directories);
+      }
+  }
 
   private function findFiles($directory, $extensions = array()) {
-      function glob_recursive($directory, &$directories = array()) {
-          foreach(glob($directory, GLOB_ONLYDIR | GLOB_NOSORT) as $folder) {
-              $directories[] = $folder;
-              glob_recursive("{$folder}/*", $directories);
-          }
-      }
-      glob_recursive($directory, $directories);
+      // function glob_recursive($directory, &$directories = array()) {
+      //     foreach(glob($directory, GLOB_ONLYDIR | GLOB_NOSORT) as $folder) {
+      //         $directories[] = $folder;
+      //         glob_recursive("{$folder}/*", $directories);
+      //     }
+      // }
+      $this->glob_recursive($directory, $directories);
       $files = array ();
       $category = array();
       foreach($directories as $directory) {
@@ -262,10 +269,17 @@ class blog_lib{
       return array($category,$files);
   }
 
-  private function __get_all_posts()
+  private function __get_all_posts($updateRedis=false)
   {
-    if(isset($this->_all_posts)) {
-      return $this->_all_posts;
+    if (!$updateRedis) {
+      if(isset($this->_all_posts)) {
+        return $this->_all_posts;
+      }
+      $post = MyRedis::get('post');
+      if($post) {
+        $this->_all_tags = MyRedis::get('tag');
+        return $post;
+      }
     }
 
     $all_tags = array();
@@ -429,14 +443,15 @@ class blog_lib{
 
       $this->_all_posts = $files;
       $this->_all_tags = $all_tags;
+      MyRedis::set('post', $files);
+      MyRedis::set('tag', $all_tags);
 
       return $this->_all_posts;
-
     } else {
-      $this->_all_tags = array();
-      $this->_all_categories = array();
-      $this->_all_posts = array();
-      return array();
+        $this->_all_tags = array();
+        $this->_all_categories = array();
+        $this->_all_posts = array();
+        return array();
     }
   }
 
@@ -493,4 +508,97 @@ class blog_lib{
    return $result;
   }
 
+  /**
+   * divide string 
+   */
+  function mbStrSplit ($string, $length=1) {
+    $start = 0;
+    $strlen = mb_strlen($string);
+
+    while ($strlen) {
+      $array[] = mb_substr($string, $start, $length, "utf8");
+      $string = mb_substr($string, $length, $strlen, "utf8");
+      $strlen = mb_strlen($string);
+    }
+
+    return $array;
+  }
+
+  public function search($keys='') {
+    if (!$keys) {
+      return false;
+    }
+
+    $keys = $this -> mbStrSplit($keys);
+
+    $posts = [];
+
+    foreach ($keys as $key => $value) {
+      $post = $this -> __get_all_posts(true);
+      foreach ($post as $k => $v) {
+        if (preg_match("/^(.*" . trim($value) . ".*)$/u", trim($v['title']))) {
+          if (!isset($posts[$this -> unicode_encode(trim($v['title']))])) {
+            $posts[$this -> unicode_encode(trim($v['title']))] = $v;
+          }
+        }
+      }
+    }
+
+    return array_values($posts);
+  }
+
+  /**
+   * utf8 to unicode
+   */
+  public static function unicode_encode($utf8)  
+  {  
+      $utf8 = iconv('UTF-8', 'UCS-2', $utf8);  
+      $length = strlen($utf8);  
+      $unicode = '';  
+
+      for ($i = 0; $i < $length - 1; $i = $i + 2)  
+      {  
+          $c = $utf8[$i];  
+          $c2 = $utf8[$i + 1];  
+
+          if (ord($c) > 0) {    
+            // 两个字节的文字  
+              $unicode .= '\u' . base_convert(ord($c), 10, 16) . base_convert(ord($c2), 10, 16);  
+          } else {  
+              $unicode .= $c2; 
+          }  
+      }  
+
+      return $unicode;  
+  } 
+
+  /**
+   * unicode to utf8
+   */
+  public static function unicode_decode($unicode)  
+  { 
+      $pattern = '/([\w]+)|(\\\u([\w]{4}))/ui';
+      preg_match_all($pattern, $unicode, $matches);  
+
+      if (!empty($matches))  
+      {  
+          $utf8 = '';  
+          for ($j = 0; $j < count($matches[0]); $j++)  
+          {  
+              $string = $matches[0][$j];  
+
+              if (strpos($string, '\\u') === 0) {  
+                  $code = base_convert(substr($string, 2, 2), 16, 10);  
+                  $code2 = base_convert(substr($string, 4), 16, 10);  
+                  $c = chr($code) . chr($code2);  
+                  $c = iconv('UCS-2', 'UTF-8', $c);  
+                  $utf8 .= $c;  
+              } else {  
+                  $utf8 .= $string;  
+              }  
+          }  
+      }  
+
+      return $utf8;  
+  } 
 }

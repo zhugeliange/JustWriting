@@ -60,11 +60,12 @@
             $('.back-top').slideDown();
         } else {
             $('.back-top').slideUp();
-            if ($(window).scrollTop() > 10) {
-                $('.search').slideUp();
-            } else {
-                $('.search').slideDown();
-            }
+        }
+        
+        if ($(window).width() > 700 && $(window).scrollTop() > 10) {
+            $('.search').slideUp();
+        } else {
+            $('.search').slideDown();
         }
     });
 

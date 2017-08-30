@@ -128,8 +128,10 @@
             </header>               
             </div>
             <div class="search">
-                <input type="text" name="search" placeholder="search">
-                <i class="fa fa-2x fa-search" aria-hidden="true"></i>
+                <form name="search" action="/" method="get">
+                    <input type="text" name="search" placeholder="search">
+                    <i class="fa fa-2x fa-search" aria-hidden="true"></i>
+                </form>
             </div>
         </div>
         {% block content %}
@@ -148,6 +150,12 @@
 
         $('.pay-change').click(function() {
             $('.alipay').toggleClass('change');
+        });
+
+        $('.search i').click(function() {
+            if ($('.search input').val()) {
+                $("[name = 'search']").submit();
+            }
         });
     </script>
 </body>

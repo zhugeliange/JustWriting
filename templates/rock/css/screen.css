@@ -154,7 +154,7 @@ article{border-bottom:1px solid #ddd;border-top:1px solid #fff;padding:30px 0;po
 }
 @media screen and (max-width:600px){article{padding:15px 0}
 }
-article h1.title{font-weight:300;line-height:35px;margin-bottom:20px}
+article h1.title{font-weight:300;line-height:35px;margin-bottom:30px}
 article h1.title a{color:#666}
 article .entry-content{line-height:2;text-align:justify}
 article .entry-content a:hover{text-decoration:underline}
@@ -186,8 +186,10 @@ article .entry-content .video-container iframe,article .entry-content .video-con
 @media screen and (max-width:800px){.post h1.title,.post .entry-content{margin-left:0}
 }
 .post .meta{position:absolute;top:85px;line-height:2;font-size:0.9em;color:#999;width:170px}
-@media screen and (max-width:800px){.post .meta{margin-top:15px;position:static;width:auto}
+@media screen and (max-width:800px){.post .meta{display: none;}
 }
+/*@media screen and (max-width:700px){.post .meta{margin-top:15px;position:static;width:auto}
+}*/
 .post .meta a{color:#999;-webkit-transition:0.3s;-moz-transition:0.3s;-o-transition:0.3s;transition:0.3s}
 .post .meta a:hover{color:#666}
 .post .meta .date,.post .meta .tags,.post .meta .comments{padding-left:30px;position:relative}
@@ -211,7 +213,7 @@ article .entry-content .video-container iframe,article .entry-content .video-con
 .archives article .meta{color:#999;font-size:0.9em;line-height:2;margin-top:15px}
 @media screen and (max-width:600px){.archives article .meta{display:none}
 }
-.archives article .meta span{margin-right:30px;display:-moz-inline-stack;display:inline-block;vertical-align:middle;*vertical-align:auto;zoom:1;*display:inline}
+.archives article .meta span{margin-right:30px;margin-bottom: 10px;display:-moz-inline-stack;display:inline-block;vertical-align:middle;*vertical-align:auto;zoom:1;*display:inline}
 .archives article .meta span:before{color:#ccc;font:1.3em FontAwesome;padding-right:10px}
 .archives article .meta a{color:#999;-webkit-transition:0.3s;-moz-transition:0.3s;-o-transition:0.3s;transition:0.3s}
 .archives article .meta a:hover{color:#666}
@@ -387,7 +389,7 @@ body{background:#3D4349;font-family:"Open Sans","HelveticaNeue-Light","Helvetica
 .archives article .meta span::before{padding-right:0}
 a{color:#1593c9}
 a:hover{color:#1593c9}
-@media screen and (max-width:1040px){body{margin:0 0}
+@media screen and (max-width:1040px){body{margin:0 0} .archives .meta {display: none;}
 }
 @media screen and (max-width:700px){.container .credit-box{display:none}
 .container .left-col{position:relative;width:100%;opacity:1}
@@ -396,7 +398,7 @@ a:hover{color:#1593c9}
 .container .left-col #header #sub-nav{display:block}
 .container .left-col #header #main-nav ul{display:block}
 .container .left-col #header #main-nav ul li{display:inline;margin-right:10px}
-.container .mid-col{float:none;width:100%}
+.container .mid-col{float:none;width:100%;padding-top: 30px;}
 .container .mid-col .mid-col-container{padding:15px 15px}
 .container .mid-col .mid-col-container #content article .meta{float:none}
 }
@@ -410,11 +412,6 @@ a:hover{color:#1593c9}
 #image_pagenavi .pre:before{content:"\f060";font:1.3em FontAwesome;position:absolute;left:0}
 #image_pagenavi .next{padding-right:30px;right:0}
 #image_pagenavi .next:before{content:"\f061";font:1.3em FontAwesome;position:absolute;right:0}
-@media screen and (max-width:699px){
-	.container .mid-col { 
-		padding-top: 10px;
-	}
-}
 @media screen and (min-width:700px){
 	.container .mid-col { 
 		padding-top: 70px;
