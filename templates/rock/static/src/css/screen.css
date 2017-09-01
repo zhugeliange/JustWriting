@@ -1,5 +1,5 @@
 @font-face {
-	font-family:'FontAwesome';src:url("/templates/rock/font/fontawesome-webfont.eot");src:url("/templates/rock/font/fontawesome-webfont.eot?#iefix") format("embedded-opentype"),url("/templates/rock/font/fontawesome-webfont.woff") format("woff"),url("/font/fontawesome-webfont.ttf") format("truetype"),url("/templates/rock/font/fontawesome-webfont.svgz#FontAwesomeRegular") format("svg"),url("/templates/rock/font/fontawesome-webfont.svg#FontAwesomeRegular") format("svg");font-weight:normal;font-style:normal
+	font-family:'FontAwesome';src:url("/templates/rock/static/dist/font/fontawesome-webfont.eot");src:url("/templates/rock/static/dist/font/fontawesome-webfont.eot?#iefix") format("embedded-opentype"),url("/templates/rock/static/dist/font/fontawesome-webfont.woff") format("woff"),url("/templates/rock/static/dist/font/fontawesome-webfont.ttf") format("truetype"),url("/templates/rock/static/dist/font/fontawesome-webfont.svgz#FontAwesomeRegular") format("svg"),url("/templates/rock/static/dist/font/fontawesome-webfont.svg#FontAwesomeRegular") format("svg");font-weight:normal;font-style:normal
 }
 
 * {
@@ -570,13 +570,13 @@ a {
 #sub-nav .social a:hover {
 	opacity: 1
 }
-/*#sub-nav .social a.facebook{background:url('../images/social/facebook.png') center no-repeat #3b5998;border:1px solid #3b5998}*/
+/*#sub-nav .social a.facebook{background:url('../images/facebook.png') center no-repeat #3b5998;border:1px solid #3b5998}*/
 #sub-nav .social a.facebook:hover {
 	border: 1px solid #2d4373
 }
 
 #sub-nav .social a.google {
-	background: url('../images/social/google.png') center no-repeat #c83d20;
+	background: url('../images/google.png') center no-repeat #c83d20;
 	border: 1px solid #c83d20
 }
 
@@ -585,20 +585,20 @@ a {
 }
 
 #sub-nav .social a.twitter {
-	background: url('../images/social/twitter.png') center no-repeat #55cff8;
+	background: url('../images/twitter.png') center no-repeat #55cff8;
 	border: 1px solid #55cff8
 }
 
 #sub-nav .social a.twitter:hover {
 	border: 1px solid #24c1f6
 }
-/*#sub-nav .social a.github{background:url('../images/social/github.png') center no-repeat #afb6ca;border:1px solid #afb6ca}*/
+/*#sub-nav .social a.github{background:url('../images/github.png') center no-repeat #afb6ca;border:1px solid #afb6ca}*/
 #sub-nav .social a.github:hover {
 	border: 1px solid #909ab6
 }
 
 #sub-nav .social a.linkedin {
-	background: url('../images/social/linkedin.png') center no-repeat #005a87;
+	background: url('../images/linkedin.png') center no-repeat #005a87;
 	border: 1px solid #005a87
 }
 
@@ -607,7 +607,7 @@ a {
 }
 
 #sub-nav .social a.pinterest {
-	background: url('../images/social/pinterest.png') center no-repeat #be4037;
+	background: url('../images/pinterest.png') center no-repeat #be4037;
 	border: 1px solid #be4037
 }
 
@@ -616,7 +616,7 @@ a {
 }
 
 #sub-nav .social a.delicious {
-	background: url('../images/social/delicious.png') center no-repeat #3271cb;
+	background: url('../images/delicious.png') center no-repeat #3271cb;
 	border: 1px solid #3271cb
 }
 
@@ -625,7 +625,7 @@ a {
 }
 
 #sub-nav .social a.pinboard {
-	background: url('../images/social/pinboard.png') center no-repeat #0066c8;
+	background: url('../images/pinboard.png') center no-repeat #0066c8;
 	border: 1px solid #3a729f
 }
 
@@ -634,20 +634,20 @@ a {
 }
 
 #sub-nav .social a.instagram {
-	background: url('../images/social/instagram.png') center no-repeat #afb6ca;
+	background: url('../images/instagram.png') center no-repeat #afb6ca;
 	border: 1px solid #afb6ca
 }
 
 #sub-nav .social a.instagram:hover {
 	border: 1px solid #61210b
 }
-/*#sub-nav .social a.weibo{background:url('../images/social/weibo.png') center no-repeat #b40404;border:1px solid #b40404}*/
+/*#sub-nav .social a.weibo{background:url('../images/weibo.png') center no-repeat #b40404;border:1px solid #b40404}*/
 #sub-nav .social a.weibo:hover {
 	border: 1px solid #eb182c
 }
 
 #sub-nav .social a.qq {
-	background: url('../images/social/qq.png') center no-repeat #128abc;
+	background: url('../images/qq.png') center no-repeat #128abc;
 	border: 1px solid #128abc
 }
 
@@ -656,7 +656,7 @@ a {
 }
 
 #sub-nav .social a.qq2 {
-	background: url('../images/social/qq2.png') center no-repeat #111111;
+	background: url('../images/qq2.png') center no-repeat #111111;
 	border: 1px solid #111111
 }
 
@@ -665,7 +665,7 @@ a {
 }
 
 #sub-nav .social a.qqqun {
-	background: url('../images/social/qqqun.png') center no-repeat #111111;
+	background: url('../images/qqqun.png') center no-repeat #111111;
 	border: 1px solid #111111
 }
 
@@ -674,7 +674,7 @@ a {
 }
 
 #sub-nav .social a.weixin {
-	background: url('../images/social/weixin.png') center no-repeat #1d8c0f;
+	background: url('../images/weixin.png') center no-repeat #1d8c0f;
 	border: 1px solid #1d8c0f
 }
 
@@ -683,7 +683,7 @@ a {
 }
 
 #sub-nav .social a.fanfou {
-	background: url('../images/social/fanfou.png') center no-repeat #00a0d0;
+	background: url('../images/fanfou.png') center no-repeat #00a0d0;
 	border: 1px solid #00a0d0
 }
 
@@ -692,24 +692,24 @@ a {
 }
 
 #sub-nav .social a.zhihu {
-	background: url('../images/social/zhihu.png') center no-repeat #177fc3;
+	background: url('../images/zhihu.png') center no-repeat #177fc3;
 	border: 1px solid #177fc3
 }
 
 #sub-nav .social a.zhihu:hover {
 	border: 1px solid #31a5e5
 }
-/*#sub-nav .social a.douban{background:url('../images/social/douban.png') center no-repeat #088a08;border:1px solid #088a08}*/
+/*#sub-nav .social a.douban{background:url('../images/douban.png') center no-repeat #088a08;border:1px solid #088a08}*/
 #sub-nav .social a.douban:hover {
 	border: 1px solid #007711
 }
-/*#sub-nav .social a.email{background:url('../images/social/email.png') center no-repeat #f89a1e;border:1px solid #f89a1e}*/
+/*#sub-nav .social a.email{background:url('../images/email.png') center no-repeat #f89a1e;border:1px solid #f89a1e}*/
 #sub-nav .social a.email:hover {
 	border: 1px solid #f89a1e
 }
 
 #sub-nav .social a.rss {
-	background: url('../images/social/rss.png') center no-repeat #ef7522;
+	background: url('../images/rss.png') center no-repeat #ef7522;
 	border: 1px solid #ef7522
 }
 
@@ -1697,7 +1697,7 @@ figure.code .s1,.gist-highlight .s1 {
 #fancybox-loading div {
 	width: 44px;
 	height: 44px;
-	background: url('/images/fancybox/fancybox_loading.gif') center center no-repeat
+	background: url('../images/fancybox_loading.gif') center center no-repeat
 }
 
 .fancybox-close {
@@ -1716,7 +1716,7 @@ figure.code .s1,.gist-highlight .s1 {
 	width: 40%;
 	height: 100%;
 	cursor: pointer;
-	background: transparent url('/images/fancybox/blank.gif');
+	background: transparent url('../images/blank.gif');
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
 	z-index: 8040
 }

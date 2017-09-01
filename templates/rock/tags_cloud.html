@@ -2,8 +2,8 @@
 {% block title %}{{ config.title }} - {{ lang('tags') }}{% endblock %}
 {% block content %}
 {%if  all_tags %}
-<link rel="stylesheet" href="/templates/rock/css/jqcloud.css" type="text/css">
-<script type="text/javascript" src="/templates/rock/js/jqcloud-1.0.4.min.js"></script>
+<link rel="stylesheet" href="/templates/{{config.template}}/static/dist/css/jqcloud.css" type="text/css">
+<script type="text/javascript" src="/templates/{{config.template}}/static/dist/js/jqcloud-1.0.4.min.js"></script>
 <script type="text/javascript">
 {% autoescape false %}
 var word_array = {{ all_tags|json_encode() }};

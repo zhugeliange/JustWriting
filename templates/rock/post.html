@@ -36,7 +36,7 @@
     {% include 'include/footer.html' %}
 </div>
 {% if post.toc %}
-    <script type="text/javascript" src="/templates/rock/js/toc.min.js"></script>      
+    <script type="text/javascript" src="/templates/{{config.template}}/static/dist/js/toc.min.js"></script>      
     <script>
       $('.toc').toc({
         'container': '.entry-content',
