@@ -5,11 +5,11 @@ Original style from softwaremaniacs.org (c) Ivan Sagalaev <Maniac@SoftwareManiac
 */
 
 .hljs {
-  display: block;
-  overflow-x: auto;
-  padding: 0.5em;
-  background: white;
-  color: black;
+	display: block;
+	overflow-x: auto;
+	padding: 0.5em;
+	background: white;
+	color: black;
 }
 
 .hljs-string,
@@ -21,7 +21,7 @@ Original style from softwaremaniacs.org (c) Ivan Sagalaev <Maniac@SoftwareManiac
 .apache .hljs-cbracket,
 .nginx .hljs-built_in,
 .tex .hljs-formula {
-  color: #888;
+	color: #888;
 }
 
 .hljs-comment,
@@ -32,7 +32,7 @@ Original style from softwaremaniacs.org (c) Ivan Sagalaev <Maniac@SoftwareManiac
 .hljs-javadoc,
 .hljs-deletion,
 .apache .hljs-sqbracket {
-  color: #ccc;
+	color: #ccc;
 }
 
 .hljs-keyword,
@@ -49,5 +49,5 @@ Original style from softwaremaniacs.org (c) Ivan Sagalaev <Maniac@SoftwareManiac
 .tex .hljs-command,
 .hljs-request,
 .hljs-status {
-  font-weight: bold;
+	font-weight: bold;
 }

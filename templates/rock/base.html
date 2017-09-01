@@ -1,35 +1,26 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
 <head>
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-WW9N4J9');</script>
-    <!-- End Google Tag Manager -->
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="猪哥亮,程序员,IT,技术,博客，linux,Nginx,mysql,php,react,ES6,node,全栈,编程">
     <meta name="description" content="猪哥亮的技术博客，分享一些linux，Nginx，mysql，php，react，ES6，node等全栈相关编程心得。">
-    <title>{% block title %}{{ config.title }} {% endblock %}</title>
     <!-- http://t.co/dKP3o1e -->
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <title>{% block title %}{{ config.title }} {% endblock %}</title>
+
     <link rel='alternate' type='application/rss+xml' title='atom 1.0' href='/feed' />
-    
     <link href="/favicon.ico" rel="shortcut icon">
-    
     <link rel="stylesheet" href="/templates/rock/css/font-awesome.css" type="text/css">
     <link rel="stylesheet" href="/templates/rock/css/animate.css" type="text/css">
-	<link href="/templates/{{config.template}}/css/highlight.css" media="screen, projection" rel="stylesheet" type="text/css">
-
-    <link href="/templates/rock/css/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-    <link href="/templates/rock/css/style.css" rel="stylesheet" type="text/css">
-    
-    <script type="text/javascript" src="/templates/rock/js/jquery-1.9.1.min.js"></script>    
+	<link rel="stylesheet" href="/templates/{{config.template}}/css/highlight.css" type="text/css" media="screen, projection">
+    <link rel="stylesheet" href="/templates/rock/css/screen.css" type="text/css" media="screen, projection">
+    <link rel="stylesheet" href="/templates/rock/css/style.css" type="text/css">   
 	<link rel="stylesheet" href="/templates/rock/css/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
+
+    <script type="text/javascript" src="/templates/rock/js/jquery-1.9.1.min.js"></script> 
     <script type="text/javascript" src="/templates/rock/css/fancybox/jquery.fancybox.pack.js"></script>
     <script type="text/javascript" src="/templates/rock/js/jquery.githubRepoWidget.min.js"></script>
 
@@ -41,12 +32,15 @@
 			});
 		});
 	</script>
-{% if config.highlight %}      
-      <link rel="stylesheet" href="/styles/highlight/styles/{{config.highlight}}.css">
-      <script src="/styles/highlight/highlight.pack.js"></script>
-      <script>hljs.initHighlightingOnLoad();</script>
-{% endif %}
-{{ config.mathjax|raw }}
+
+    {% if config.highlight %}      
+          <link rel="stylesheet" href="/templates/rock/css/highlight/{{config.highlight}}.css">
+          <script src="/templates/rock/js/highlight.pack.js"></script>
+          <script>hljs.initHighlightingOnLoad();</script>
+    {% endif %}
+
+    {{ config.mathjax|raw }}
+
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script>
       (adsbygoogle = window.adsbygoogle || []).push({
@@ -54,35 +48,42 @@
         enable_page_level_ads: true
       });
     </script>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WW9N4J9');</script>
+    <!-- End Google Tag Manager -->
 </head>
 <body>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WW9N4J9"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
+
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
         })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
         ga('create', 'UA-101839507-2', 'auto');
         ga('send', 'pageview');
-        
     </script>
+
     <div class="container">
         <div class="left-col">
             <div class="intrude-less">
             <header id="header" class="inner">
                 <div class="profilepic">
-<a href='/'> <img src="head.jpg" alt='Profile Picture' id='ProfilePicture' /> </a>
+                    <a href='/'> <img src="head.jpg" alt='Profile Picture' id='ProfilePicture' /> </a>
                 </div>
-
 				{% if config.title %}
-                <h2><a href="/">{{ config.title }}</a></h2>
+                    <h2><a href="/">{{ config.title }}</a></h2>
 				{% endif %}
 				{% if config.intro %}
-                <p class="subtitle">{{ config.intro }}</p>
+                    <p class="subtitle">{{ config.intro }}</p>
 				{% endif %}
                 <nav id="main-nav">
                     <ul class="main-navigation">
@@ -93,27 +94,21 @@
                 </nav>
                 <nav id="sub-nav">
                 <div class="social">
-                  
 					{% if config.github %}
-                    <a class="github" style="background:url('github.png') center no-repeat #afb6ca;border:1px solid #afb6ca" href="{{ config.github }}" title="GitHub" target="_blank">GitHub</a>
+                        <a class="github" style="background:url('github.png') center no-repeat #afb6ca;border:1px solid #afb6ca" href="{{ config.github }}" title="GitHub" target="_blank">GitHub</a>
 					{% endif %}
-					
 					{% if config.facebook %}
-                    <a class="facebook" style="background:url('facebook.png') center no-repeat #3b5998;border:1px solid #3b5998" href="{{ config.facebook }}" title="Facebook" target="_blank">Facebook</a>
+                        <a class="facebook" style="background:url('facebook.png') center no-repeat #3b5998;border:1px solid #3b5998" href="{{ config.facebook }}" title="Facebook" target="_blank">Facebook</a>
 					{% endif %}
-
                     {% if config.weibo %}
-                    <a class="weibo" style="background:url('weibo.png') center no-repeat #b40404;border:1px solid #b40404" href="{{ config.weibo }}" title="e-Weibo" target="_blank">Weibo</a>
+                        <a class="weibo" style="background:url('weibo.png') center no-repeat #b40404;border:1px solid #b40404" href="{{ config.weibo }}" title="e-Weibo" target="_blank">Weibo</a>
                     {% endif %}
-                    
                     {% if config.email %}
-                    <a class="email" style="background:url('email.png') center no-repeat #f89a1e;border:1px solid #f89a1e" href="mailto:{{ config.email }}" title="e-Mail" target="_blank">e-Mail</a>
+                        <a class="email" style="background:url('email.png') center no-repeat #f89a1e;border:1px solid #f89a1e" href="mailto:{{ config.email }}" title="e-Mail" target="_blank">e-Mail</a>
                     {% endif %}
-
                     {% if config.douban %}
-                    <a class="douban" style="background:url('douban.png') center no-repeat #088a08;border:1px solid #088a08" href="{{ config.douban }}" title="Douban" target="_blank">Douban</a>
+                        <a class="douban" style="background:url('douban.png') center no-repeat #088a08;border:1px solid #088a08" href="{{ config.douban }}" title="Douban" target="_blank">Douban</a>
                     {% endif %}
-					
                 </div>
                 </nav>
 				{% if config.author %}
@@ -125,7 +120,6 @@
                     </div>
                 </section>
 				{% endif %}
-
             </header>               
             </div>
             <div class="search">

@@ -18,12 +18,11 @@
                                 {% endfor %}
                             {% endif %}
                         </span>
-                        
                     </div>
 					{% if post.metadata.link %}
-					<h1 class="title">[{{ lang('link') }}]<a href="{{post.metadata.link}}" target="_blank">{{ post.title }}</a></h1>
+					   <h1 class="title">[{{ lang('link') }}]<a href="{{post.metadata.link}}" target="_blank">{{ post.title }}</a></h1>
 					{% else %}
-                    <h1 class="title"><a href="{{ post.link }}">{{ post.title }}</a></h1>
+                        <h1 class="title"><a href="{{ post.link }}">{{ post.title }}</a></h1>
 					{% endif %}
                 </article>
                 {% endfor %}

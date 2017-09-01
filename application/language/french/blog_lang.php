@@ -1,10 +1,8 @@
 <?php
-
 $lang['archive'] = "Archive";
 $lang['link'] = "Liens";
 $lang['aboutme'] = "À propos";
 $lang['myworks'] = "Travail";
-
 $lang['home'] = "Accueil";
 $lang['tags'] = "Tags";
 $lang['prev'] = "Précédent";

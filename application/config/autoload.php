@@ -1,4 +1,7 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+if (!defined('BASEPATH')) {
+    exit('No direct script access allowed');
+}
 /*
 | -------------------------------------------------------------------
 | AUTO-LOADER
@@ -26,7 +29,6 @@
 | 6. Models
 |
 */
-
 /*
 | -------------------------------------------------------------------
 |  Auto-load Packges
@@ -36,10 +38,7 @@
 |  $autoload['packages'] = array(APPPATH.'third_party', '/usr/local/shared');
 |
 */
-
 $autoload['packages'] = array();
-
-
 /*
 | -------------------------------------------------------------------
 |  Auto-load Libraries
@@ -51,10 +50,7 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('database', 'session', 'xmlrpc');
 */
-
 $autoload['libraries'] = array();
-
-
 /*
 | -------------------------------------------------------------------
 |  Auto-load Helper Files
@@ -63,10 +59,7 @@ $autoload['libraries'] = array();
 |
 |	$autoload['helper'] = array('url', 'file');
 */
-
-$autoload['helper'] = array('url','storage','twig','language');
-
-
+$autoload['helper'] = array('url', 'storage', 'twig', 'language');
 /*
 | -------------------------------------------------------------------
 |  Auto-load Config files
@@ -79,10 +72,7 @@ $autoload['helper'] = array('url','storage','twig','language');
 | config files.  Otherwise, leave it blank.
 |
 */
-
 $autoload['config'] = array();
-
-
 /*
 | -------------------------------------------------------------------
 |  Auto-load Language files
@@ -95,10 +85,7 @@ $autoload['config'] = array();
 | "codeigniter_lang.php" would be referenced as array('codeigniter');
 |
 */
-
 $autoload['language'] = array();
-
-
 /*
 | -------------------------------------------------------------------
 |  Auto-load Models
@@ -108,9 +95,6 @@ $autoload['language'] = array();
 |	$autoload['model'] = array('model1', 'model2');
 |
 */
-
 $autoload['model'] = array();
-
-
 /* End of file autoload.php */
 /* Location: ./application/config/autoload.php */

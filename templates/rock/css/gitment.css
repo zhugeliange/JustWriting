@@ -30,7 +30,6 @@
 
 .gitment-container .gitment-spinner-icon {
   fill: #333;
-
   -webkit-animation: gitment-spin 1s steps(12) infinite;
   animation: gitment-spin 1s steps(12) infinite;
 }
@@ -211,11 +210,9 @@ a.gitment-comment-name:visited {
   border-style: solid;
   border-color: transparent;
   border-radius: 0;
-
   white-space: nowrap;
   cursor: pointer;
   user-select: none;
-
   outline: none;
 }
 
@@ -308,21 +305,17 @@ a.gitment-editor-logout-link:hover {
   max-height: 500px;
   padding: 16px;
   resize: vertical;
-
   max-width: 100%;
   margin: 0;
   font-size: 14px;
   line-height: 1.6;
-
   background-color: #fff;
-
   color: #333;
   vertical-align: middle;
   border: none;
   border-radius: 0;
   outline: none;
   box-shadow: none;
-
   overflow: visible;
 }
 
@@ -332,13 +325,10 @@ a.gitment-editor-logout-link:hover {
 
 .gitment-editor-preview {
   min-height: 150px;
-
   padding: 16px;
   background-color: transparent;
-
   width: 100%;
   font-size: 14px;
-
   line-height: 1.5;
   word-wrap: break-word;
 }
@@ -393,7 +383,6 @@ a.gitment-editor-footer-tip:hover {
 .gitment-comments-init-btn {
   color: #fff;
   background-color: #00BCD4;
-
   position: relative;
   display: inline-block;
   padding: 7px 13px;

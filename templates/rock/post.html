@@ -1,26 +1,20 @@
 {% extends 'base.html' %}
 {% block title %}{{ post.title }} - {{ config.title }} {% endblock %}
-
 {% block content %}
 <div class="mid-col">
     <div class="mid-col-container">
         <div id="content" class="inner">
             <article class="post" id="posts">
                 <h1 class="title">{{ post.title }}</h1>
-
                 <div class="time">
                     <span class="date">{{ post.date | date('Y-m-d') }}</span>
                 </div>
-
-
                 <div class="entry-content">
                     <div class="p_part">
-
-{% if post.toc %}
-<div class="toc"></div>  
-{% endif %}  
-
-{{ post.html|raw }}
+                        {% if post.toc %}
+                        <div class="toc"></div>  
+                        {% endif %}  
+                        {{ post.html|raw }}
                     </div>
                 </div>
 				</br>
@@ -37,23 +31,25 @@
                 </div>
             </article>
         </div>
-    {% include 'include/comments.html' %}
+        {% include 'include/comments.html' %}
     </div>
     {% include 'include/footer.html' %}
 </div>
 {% if post.toc %}
-<script type="text/javascript" src="/templates/rock/js/toc.min.js"></script>      
-<script>
-  $('.toc').toc({
-    'container': '.entry-content',
-    'anchorName': function(i, heading, prefix) { //custom function for anchor name
-         return prefix+i;
-     }    
-  });
-</script>
+    <script type="text/javascript" src="/templates/rock/js/toc.min.js"></script>      
+    <script>
+      $('.toc').toc({
+        'container': '.entry-content',
+        'anchorName': function(i, heading, prefix) { //custom function for anchor name
+             return prefix+i;
+         }    
+      });
+    </script>
 {% endif %}  
 <i class="fa fa-3x fa-chevron-circle-up back-top"></i>
+
 <!-- Go to www.addthis.com/dashboard to customize your tools --> <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5993afdc8ae3aacc"></script>
+
 <script type="text/javascript">
     $(window).scroll(function() {
         if ($(window).scrollTop() > 1000) {
