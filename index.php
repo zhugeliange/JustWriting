@@ -17,7 +17,7 @@
  * NOTE: If you change these, also change the error_reporting() code below
  *
  */
-define('ENVIRONMENT', 'development');
+define('ENVIRONMENT', 'production'); // 这里是重点。。。上线的时候一定要把环境变量设置成development，不然卡死你
 /*
  *---------------------------------------------------------------
  * ERROR REPORTING
@@ -92,7 +92,7 @@ $application_folder = 'application';
 // The controller class file name.  Example:  Mycontroller
 // $routing['controller'] = '';
 // The controller function you wish to be called.
-// $routing['function']	= '';
+// $routing['function'] = '';
 /*
  * -------------------------------------------------------------------
  *  CUSTOM CONFIG VALUES
