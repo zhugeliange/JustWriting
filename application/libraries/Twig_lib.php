@@ -22,7 +22,7 @@ class Twig_lib
             $this->twig = new Twig_Environment($this->loader, array('auto_reload' => true));
         } else {
             if ('development' == ENVIRONMENT) {
-                $this->twig = new Twig_Environment($this->loader, array('cache' => APPPATH . 'cache', 'auto_reload' => true, 'debug' => true));
+                $this->twig = new Twig_Environment($this->loader, array('cache' => false, 'auto_reload' => true, 'debug' => true));
                 $this->twig->addExtension(new Twig_Extension_Debug());
             } else {
                 $this->twig = new Twig_Environment($this->loader, array( 'cache' => APPPATH.'cache', 'auto_reload' => true )); 

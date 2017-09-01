@@ -19,27 +19,7 @@
     <link rel="stylesheet" href="/templates/{{config.template}}/static/dist/css/screen.css" type="text/css" media="screen, projection">
     <link rel="stylesheet" href="/templates/{{config.template}}/static/dist/css/style.css" type="text/css">   
 	<link rel="stylesheet" href="/templates/{{config.template}}/static/dist/css/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
-
-    <script type="text/javascript" src="/templates/{{config.template}}/static/dist/js/jquery-1.9.1.min.js"></script> 
-    <script type="text/javascript" src="/templates/{{config.template}}/static/dist/js/jquery.fancybox.pack.js"></script>
-    <script type="text/javascript" src="/templates/{{config.template}}/static/dist/js/jquery.githubRepoWidget.min.js"></script>
-
-	<script type="text/javascript">
-		$(document).ready(function() {
-			$("a[href$='.jpg'],a[href$='.jpeg'],a[href$='.png'],a[href$='.gif'],a[href$='.bmp'],a[href$='.JPG'],a[href$='.JPEG'],a[href$='.PNG'],a[href$='.GIF'],a[href$='.BMP']").attr('rel','group-images').fancybox({
-				openEffect	: 'none',
-				closeEffect	: 'none'
-			});
-		});
-	</script>
-
-    {% if config.highlight %}      
-          <link rel="stylesheet" href="/templates/{{config.template}}/static/dist/css/highlight/{{config.highlight}}.css">
-          <script src="/templates/{{config.template}}/static/dist/js/highlight.pack.js"></script>
-          <script>hljs.initHighlightingOnLoad();</script>
-    {% endif %}
-
-    {{ config.mathjax|raw }}
+    <link rel="stylesheet" href="/templates/{{config.template}}/static/dist/css/highlight/{{config.highlight}}.css">
 
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script>
@@ -132,6 +112,19 @@
         {% block content %}
         {% endblock %}
     </div>
+    <script type="text/javascript" src="/templates/{{config.template}}/static/dist/js/jquery-1.9.1.min.js"></script> 
+    <script type="text/javascript" src="/templates/{{config.template}}/static/dist/js/jquery.fancybox.pack.js"></script>
+    <script type="text/javascript" src="/templates/{{config.template}}/static/dist/js/jquery.githubRepoWidget.min.js"></script>
+    <script src="/templates/{{config.template}}/static/dist/js/highlight.pack.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("a[href$='.jpg'],a[href$='.jpeg'],a[href$='.png'],a[href$='.gif'],a[href$='.bmp'],a[href$='.JPG'],a[href$='.JPEG'],a[href$='.PNG'],a[href$='.GIF'],a[href$='.BMP']").attr('rel','group-images').fancybox({
+                openEffect  : 'none',
+                closeEffect : 'none'
+            });
+        });
+    </script>
     <script type="text/javascript">
         $('#pay').click(function() {
             $('.pay').removeClass('rollOut');
