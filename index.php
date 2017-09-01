@@ -17,7 +17,7 @@
  * NOTE: If you change these, also change the error_reporting() code below
  *
  */
-define('ENVIRONMENT', 'production'); // 这里是重点。。。上线的时候一定要把环境变量设置成development，不然卡死你
+define('ENVIRONMENT', 'production'); // 这里是重点。。。上线的时候一定要把环境变量设置成production，不然卡死你
 /*
  *---------------------------------------------------------------
  * ERROR REPORTING
