@@ -35,10 +35,4 @@ class MyRedis
         return self::handler() -> set($key, $value);
     } 
 }
-
-// $array1 = [1, 'ss', '\+=-!@#$%^&*()', '呵呵'];
-// print_r(MyRedis::unicode_encode('呵呵'));
-// MyRedis::set('array1', $array1);
-// print_r(MyRedis::get('array1'));
-// echo "\n";
 ?>

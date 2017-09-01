@@ -21,8 +21,12 @@ class Twig_lib
         if (IS_SAE or !is_writable(APPPATH . 'cache')) {
             $this->twig = new Twig_Environment($this->loader, array('auto_reload' => true));
         } else {
-            $this->twig = new Twig_Environment($this->loader, array('cache' => APPPATH . 'cache', 'auto_reload' => true, 'debug' => true));
-            $this->twig->addExtension(new Twig_Extension_Debug());
+            if ('development' == ENVIRONMENT) {
+                 $this->twig = new Twig_Environment($this->loader, array( 'cache' => APPPATH.'cache', 'auto_reload' => true )); 
+            } else {
+                $this->twig = new Twig_Environment($this->loader, array('cache' => APPPATH . 'cache', 'auto_reload' => true, 'debug' => true));
+                $this->twig->addExtension(new Twig_Extension_Debug());
+            }
         }
     }
     public function render($tpl, $data, $return = FALSE)
