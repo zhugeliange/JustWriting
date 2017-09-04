@@ -77,95 +77,95 @@ class blog_lib
             return $filename;
         }
     }
-    public function image_upload($image)
-    {
-        if (empty($image)) {
-            return false;
-        }
-        if (IS_SAE) {
-            $config['upload_path'] = IMAGE_PATH;
-        } else {
-            $config['upload_path'] = FCPATH . IMAGE_PATH;
-            if (!file_exists($config['upload_path'])) {
-                if (is_writable($this->posts_path)) {
-                    mkdir($config['upload_path'], 0777, true);
-                } else {
-                    $this->_error = $config['upload_path'] . ' is not writable.';
-                    return false;
-                }
-            }
-        }
-        //TODO:SAE下如何获得上传文件的类型
-        $config['allowed_types'] = '*';
-        // $config['allowed_types'] = 'gif|jpg|png';
-        $config['max_size'] = '0';
-        $config['max_width'] = '0';
-        $config['max_height'] = '0';
-        $config['overwrite'] = true;
-        $this->CI->load->library('upload', $config);
-        if (!$this->CI->upload->do_upload('image')) {
-            $this->_error = array('error' => $this->CI->upload->display_errors());
-            return false;
-        } else {
-            $data = $this->CI->upload->data();
-            $image_filename = $data['file_name'];
-            if (IS_SAE) {
-                $link = $data['full_path'];
-            } else {
-                $link = $this->CI->blog_config['base_url'] . "/posts/images/{$image_filename}";
-            }
-            return $link;
-        }
-    }
-    public function append_post($filename, $text, $image)
-    {
-        if (empty($text) and empty($image)) {
-            return false;
-        }
-        if (substr($filename, -3) != '.md') {
-            $filename .= '.md';
-        }
-        if (IS_SAE) {
-            $path = 'posts/' . $filename;
-        } else {
-            $path = $this->posts_path . $filename;
-        }
-        if (!s_file_exists($path)) {
-            $this->_error = $filename . ' is not exist';
-            return false;
-        }
-        $content = s_read($path);
-        if ($text) {
-            $content .= "\n\n" . $text;
-            if (s_write($path, $content) === false) {
-                $this->_error = 'failed to write';
-                return false;
-            }
-        }
-        if ($image) {
-            $ret = $this->image_upload($image);
-            if ($ret === false) {
-                return false;
-            } else {
-                $image_filename = basename($ret);
-                $content .= "\n\n" . "![](images/{$image_filename})";
-                if (s_write($path, $content) === false) {
-                    $this->_error = 'failed to write';
-                    return false;
-                } else {
-                    return $filename;
-                }
-            }
-        }
-        return $filename;
-    }
+    // public function image_upload($image)
+    // {
+    //     if (empty($image)) {
+    //         return false;
+    //     }
+    //     if (IS_SAE) {
+    //         $config['upload_path'] = IMAGE_PATH;
+    //     } else {
+    //         $config['upload_path'] = FCPATH . IMAGE_PATH;
+    //         if (!file_exists($config['upload_path'])) {
+    //             if (is_writable($this->posts_path)) {
+    //                 mkdir($config['upload_path'], 0777, true);
+    //             } else {
+    //                 $this->_error = $config['upload_path'] . ' is not writable.';
+    //                 return false;
+    //             }
+    //         }
+    //     }
+    //     //TODO:SAE下如何获得上传文件的类型
+    //     $config['allowed_types'] = '*';
+    //     // $config['allowed_types'] = 'gif|jpg|png';
+    //     $config['max_size'] = '0';
+    //     $config['max_width'] = '0';
+    //     $config['max_height'] = '0';
+    //     $config['overwrite'] = true;
+    //     $this->CI->load->library('upload', $config);
+    //     if (!$this->CI->upload->do_upload('image')) {
+    //         $this->_error = array('error' => $this->CI->upload->display_errors());
+    //         return false;
+    //     } else {
+    //         $data = $this->CI->upload->data();
+    //         $image_filename = $data['file_name'];
+    //         if (IS_SAE) {
+    //             $link = $data['full_path'];
+    //         } else {
+    //             $link = $this->CI->blog_config['base_url'] . "/posts/images/{$image_filename}";
+    //         }
+    //         return $link;
+    //     }
+    // }
+    // public function append_post($filename, $text, $image)
+    // {
+    //     if (empty($text) and empty($image)) {
+    //         return false;
+    //     }
+    //     if (substr($filename, -3) != '.md') {
+    //         $filename .= '.md';
+    //     }
+    //     if (IS_SAE) {
+    //         $path = 'posts/' . $filename;
+    //     } else {
+    //         $path = $this->posts_path . $filename;
+    //     }
+    //     if (!s_file_exists($path)) {
+    //         $this->_error = $filename . ' is not exist';
+    //         return false;
+    //     }
+    //     $content = s_read($path);
+    //     if ($text) {
+    //         $content .= "\n\n" . $text;
+    //         if (s_write($path, $content) === false) {
+    //             $this->_error = 'failed to write';
+    //             return false;
+    //         }
+    //     }
+    //     if ($image) {
+    //         $ret = $this->image_upload($image);
+    //         if ($ret === false) {
+    //             return false;
+    //         } else {
+    //             $image_filename = basename($ret);
+    //             $content .= "\n\n" . "![](images/{$image_filename})";
+    //             if (s_write($path, $content) === false) {
+    //                 $this->_error = 'failed to write';
+    //                 return false;
+    //             } else {
+    //                 return $filename;
+    //             }
+    //         }
+    //     }
+    //     return $filename;
+    // }
     public function get_post($filename)
     {
         $prev_post = array();
         $next_post = array();
         $current_post = array();
         $filename .= '.md';
-        $posts = $this->__get_all_posts();
+        $posts = MyRedis::get('post');
         foreach ($posts as $key => $post) {
             if (strtolower($post['fname']) == strtolower($filename)) {
                 if ($key >= 1) {
@@ -219,30 +219,21 @@ class blog_lib
         }
         return array($category, $files);
     }
-    private function __get_all_posts($updateRedis = false)
+    private function __get_all_posts()
     {
-        if (!$updateRedis) {
-            if (isset($this->_all_posts)) {
-                return $this->_all_posts;
-            }
-            $post = MyRedis::get('post');
-            if ($post) {
-                $this->_all_tags = MyRedis::get('tag');
-                return $post;
-            }
-        }
         $all_tags = array();
         $posts_path = $this->posts_path;
         list($categories, $post_files) = $this->findFiles($posts_path, array('md'));
         $this->_all_categories = $categories;
         if ($handle = opendir($posts_path)) {
+            $tops = array();
             $files = array();
             $filetimes = array();
             foreach ($post_files['md'] as $post_file_path) {
                 $entry = basename($post_file_path);
                 $fcontents = file($post_file_path);
                 $hi = 0;
-                $pattern = '/^\\s*(title|author|date|position|toc|description|intro|status|toc|url|tags|category)\\s*:(.*?)$/uim';
+                $pattern = '/^\\s*(title|author|date|position|toc|description|intro|status|toc|url|tags|category|top)\\s*:(.*?)$/uim';
                 $post_title = '';
                 $post_intro = '';
                 $post_author = '';
@@ -302,6 +293,9 @@ class blog_lib
                                 case 'description':
                                     $post_intro = trim($matches[2]);
                                     break;
+                                case 'top':
+                                    $post_top = trim($matches[2]) == 'yes' ? true : false;
+                                    break;
                                 default:
                                     break;
                             }
@@ -353,7 +347,8 @@ class blog_lib
                     $post_category = $temp_c;
                 }
                 if ($post_status == 'public') {
-                    $files[] = array('fname' => $entry, 'slug' => $slug, 'toc' => $toc, 'link' => $this->CI->blog_config['base_url'] . "/post/{$slug}", 'title' => $post_title, 'author' => $post_author, 'date' => $post_date, 'tags' => $post_tags, 'status' => $post_status, 'intro' => $post_intro, 'content' => $post_content, 'category' => $post_category);
+                    if ($post_top) $tops[] = array('fname' => $entry, 'slug' => $slug, 'toc' => $toc, 'link' => $this->CI->blog_config['base_url'] . "/post/{$slug}", 'title' => $post_title, 'author' => $post_author, 'date' => $post_date, 'tags' => $post_tags, 'status' => $post_status, 'intro' => $post_intro, 'content' => $post_content, 'category' => $post_category, 'top' => $post_top);
+                    $files[] = array('fname' => $entry, 'slug' => $slug, 'toc' => $toc, 'link' => $this->CI->blog_config['base_url'] . "/post/{$slug}", 'title' => $post_title, 'author' => $post_author, 'date' => $post_date, 'tags' => $post_tags, 'status' => $post_status, 'intro' => $post_intro, 'content' => $post_content, 'category' => $post_category, 'top' => $post_top);
                     if ($position) {
                         $post_dates[] = $position;
                     } else {
@@ -368,31 +363,23 @@ class blog_lib
                 }
             }
             array_multisort($post_dates, SORT_DESC, $files);
-            $this->_all_posts = $files;
-            $this->_all_tags = $all_tags;
+            MyRedis::set('top', $tops);
             MyRedis::set('post', $files);
             MyRedis::set('tag', $all_tags);
-            return $this->_all_posts;
-        } else {
-            $this->_all_tags = array();
-            $this->_all_categories = array();
-            $this->_all_posts = array();
-            return array();
         }
     }
-    public function get_posts($options = array())
+    public function get_posts($top = false)
     {
-        return $this->__get_all_posts();
+        return $top ? MyRedis::get('top') : MyRedis::get('post');
     }
     public function get_posts_tags()
     {
-        $this->__get_all_posts();
-        return $this->_all_tags;
+        return MyRedis::get('tag');
     }
     public function get_posts_by_tag($tag)
     {
         $tag = trim($tag);
-        $posts = $this->__get_all_posts();
+        $posts = MyRedis::get('post');
         $result = array();
         foreach ($posts as $post) {
             foreach ($post['tags'] as $post_tag) {
@@ -404,24 +391,24 @@ class blog_lib
         }
         return $result;
     }
-    public function get_posts_categories()
-    {
-        $this->__get_all_posts();
-        return $this->_all_categories;
-    }
-    public function get_posts_by_category($category)
-    {
-        $category = trim($category);
-        $posts = $this->__get_all_posts();
-        $result = array();
-        foreach ($posts as $post) {
-            if (strtolower($category) == strtolower($post['category'])) {
-                $result[] = $post;
-                break;
-            }
-        }
-        return $result;
-    }
+    // public function get_posts_categories()
+    // {
+    //     $this->__get_all_posts();
+    //     return $this->_all_categories;
+    // }
+    // public function get_posts_by_category($category)
+    // {
+    //     $category = trim($category);
+    //     $posts = $this->__get_all_posts();
+    //     $result = array();
+    //     foreach ($posts as $post) {
+    //         if (strtolower($category) == strtolower($post['category'])) {
+    //             $result[] = $post;
+    //             break;
+    //         }
+    //     }
+    //     return $result;
+    // }
     /**
      * divide string 
      */
@@ -444,7 +431,8 @@ class blog_lib
         $keys = $this->mbStrSplit($keys);
         $posts = [];
         foreach ($keys as $key => $value) {
-            $post = $this->__get_all_posts(true);
+            $this->__get_all_posts();
+            $post = MyRedis::get('post');
             foreach ($post as $k => $v) {
                 if (preg_match("/^(.*" . trim($value) . ".*)\$/u", trim($v['title']))) {
                     if (!isset($posts[$this->unicode_encode(trim($v['title']))])) {

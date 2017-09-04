@@ -16,14 +16,14 @@ class Blog extends CI_Controller
         $this->load->library('twig_lib');
         twig_extend();
         $this->data['config'] = $this->blog_config;
-        $this->data['all_categories'] = $this->blog_lib->get_posts_categories();
+        // $this->data['all_categories'] = $this->blog_lib->get_posts_categories();
         $this->data['all_tags'] = array_values($this->blog_lib->get_posts_tags());
     }
     public function index()
     {
-        $this->posts();
+        $this->posts(true);
     }
-    public function posts($pageno = 1)
+    public function posts($top = false, $pageno = 1)
     {
         $pageno = intval($pageno);
         $posts_per_page = $this->blog_config['posts_per_page'];
@@ -31,7 +31,7 @@ class Blog extends CI_Controller
             $posts_per_page = 10;
         }
         $this->load_common_data();
-        $posts = isset($_GET['search']) && $_GET['search'] ? $this->blog_lib->search($_GET['search']) : $this->blog_lib->get_posts();
+        $posts = isset($_GET['search']) && $_GET['search'] ? $this->blog_lib->search($_GET['search']) : $this->blog_lib->get_posts($top);
         $offset = ($pageno - 1) * $posts_per_page;
         $this->data['posts'] = array_slice($posts, $offset, $posts_per_page);
         if ($pageno > 1) {
@@ -78,18 +78,18 @@ class Blog extends CI_Controller
             $this->twig_lib->render("post.html", $this->data);
         }
     }
-    public function gallery()
-    {
-        $this->load_common_data();
-        $this->twig_lib->render("gallery.html", $this->data);
-    }
-    public function category($category)
-    {
-        $category = trim(urldecode($category));
-        $this->load_common_data();
-        $this->data['posts'] = $this->blog_lib->get_posts_by_category($category);
-        $this->twig_lib->render("tags.html", $this->data);
-    }
+    // public function gallery()
+    // {
+    //     $this->load_common_data();
+    //     $this->twig_lib->render("gallery.html", $this->data);
+    // }
+    // public function category($category)
+    // {
+    //     $category = trim(urldecode($category));
+    //     $this->load_common_data();
+    //     $this->data['posts'] = $this->blog_lib->get_posts_by_category($category);
+    //     $this->twig_lib->render("tags.html", $this->data);
+    // }
     public function tags($tag = '')
     {
         $tag = trim(urldecode($tag));
@@ -106,14 +106,14 @@ class Blog extends CI_Controller
     {
         echo $this->blog_lib->get_help();
     }
-    public function feed()
-    {
-        $this->load_common_data();
-        $this->load->helper('xml');
-        $this->load->helper('text');
-        $this->data['posts'] = $this->blog_lib->get_posts();
-        $this->load->view("feed.html", $this->data);
-    }
+    // public function feed()
+    // {
+    //     $this->load_common_data();
+    //     $this->load->helper('xml');
+    //     $this->load->helper('text');
+    //     $this->data['posts'] = $this->blog_lib->get_posts();
+    //     $this->load->view("feed.html", $this->data);
+    // }
     function isAjax()
     {
         return isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest';
