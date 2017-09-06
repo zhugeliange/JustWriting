@@ -8,6 +8,11 @@ var gulp = require('gulp'), // gulp基础库
     del = require('del'), // 清除
     notify = require('gulp-notify'); // 提示
 
+// 清空输出目录
+gulp.task('clean', function() {
+    return del.sync(['templates/rock/static/dist/']);
+});
+
 // css处理
 gulp.task('minifycss', function() {
     return gulp.src('templates/rock/static/src/css/**/*.css') // 设置css
@@ -42,11 +47,6 @@ gulp.task('minifyimage', function() {
         .pipe(notify({
             message: "image task ok"
         })); // 提示成功
-});
-
-// 清空输出目录
-gulp.task('clean', function(cb) {
-    del('templates/rock/static/dist', cb)
 });
 
 gulp.task('copy', function() {

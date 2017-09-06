@@ -227,3 +227,11 @@
     font-weight: bolder;
     margin: 1em;
 }
+
+.toc > ul > .toc-h2 {
+    font-weight: bolder;
+}
+
+.toc > ul > .toc-h3 {
+    margin-left: 1em;
+}
