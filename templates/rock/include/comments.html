@@ -9,7 +9,7 @@
 	<div id="container"></div>
 	<script src="/templates/rock/static/dist/js/gitment.js"></script>
 	<script>
-		var id = encodeURIComponent(window.location.pathname);
+		var id = $('#posts .title').text();
 		var clientId = '05e121b296febffb17e0';
 		var clientSecret = 'b864371cd8ce021bc84ab61f3342107508fea286';
 		var gitment = new Gitment({

@@ -255,10 +255,12 @@ class blog_lib
                                     $toc = $tocstring == 'yes' ? true : false;
                                     break;
                                 case 'position':
-                                    $position = time() - trim($matches[2]);
+                                    $position = intval(trim($matches[2]));
                                     break;
                                 case 'title':
-                                    $post_title = $matches[2];
+                                    $post_title_temp = [];
+                                    preg_match_all("/[\x80-\xffA-Za-z0-9]+/", $matches[2], $post_title_temp);
+                                    $post_title = trim(implode('', $post_title_temp[0]));
                                     break;
                                 case 'date':
                                     $post_date = trim($matches[2]);
@@ -350,10 +352,11 @@ class blog_lib
                     if ($post_top) $tops[] = array('fname' => $entry, 'slug' => $slug, 'toc' => $toc, 'link' => $this->CI->blog_config['base_url'] . "/post/{$slug}", 'title' => $post_title, 'author' => $post_author, 'date' => $post_date, 'tags' => $post_tags, 'status' => $post_status, 'intro' => $post_intro, 'content' => $post_content, 'category' => $post_category, 'top' => $post_top);
                     $files[] = array('fname' => $entry, 'slug' => $slug, 'toc' => $toc, 'link' => $this->CI->blog_config['base_url'] . "/post/{$slug}", 'title' => $post_title, 'author' => $post_author, 'date' => $post_date, 'tags' => $post_tags, 'status' => $post_status, 'intro' => $post_intro, 'content' => $post_content, 'category' => $post_category, 'top' => $post_top);
                     if ($position) {
-                        $post_dates[] = $position;
+                        $post_tops[] = $position;
                     } else {
-                        $post_dates[] = $post_date;
+                        $post_tops[] = $post_date;
                     }
+                    $post_dates[] = $post_date;
                     $post_titles[] = $post_title;
                     $post_authors[] = $post_author;
                     $post_tags[] = $post_tags;
@@ -362,6 +365,7 @@ class blog_lib
                     $post_contents[] = $post_content;
                 }
             }
+            array_multisort($post_tops, SORT_ASC, $tops);
             array_multisort($post_dates, SORT_DESC, $files);
             MyRedis::set('top', $tops);
             MyRedis::set('post', $files);
