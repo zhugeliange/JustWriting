@@ -6,6 +6,10 @@
 
 > 这么牛叉的肯定不是我写的，是基于 [JustWriting](https://github.com/hjue/JustWriting) 这位大神的 （其实也是基于 [FarBox](https://www.farbox.com/) 的。。。），主题是 [rock](http://rock.farbox.com/) 这位大神的。
 
+**效果如下：**
+
+![justwriting1](http://oj6n9nf7i.bkt.clouddn.com/image/test/justwriting1.png)
+
 > 我主要改动了以下几点： 
 
 ##### 1. 去掉了各种不必要的文件和代码，把php文件格式化了下，加了个gulp，用于把css，js，图片这些静态资源进行压缩，又把目录结构改的更清晰了，（我有代码洁癖。。。）
