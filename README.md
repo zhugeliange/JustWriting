@@ -1,6 +1,6 @@
 # markdown blog system
 
-### ***[demo](http://fsociety.cn)***
+### ***[我的个人技术博客](http://fsociety.cn)***
 
 > 就是一个静态博客，类似于 `hexo` 这些，最大好处就是集成 `Dropbox` 之后可以实现直接在本地编写 `markdown` 文件，自动同步到线上，并且这些数据是实时保存在你本地电脑和 `Dropbox` 里面的，方便将来随意迁移。
 
